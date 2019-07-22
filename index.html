@@ -1,5 +1,5 @@
 <!doctype html>
-<html amp lang="en">
+<html amp lang="pt-br">
 
 <head>
   <meta charset="utf-8">
@@ -9,8 +9,17 @@
   <script async src="https://cdn.ampproject.org/v0.js"></script>
   <!-- Import other AMP Extensions here -->
 
+  <!-- AMP SCRIPT para Analytics -->
+  <script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
   <!-- AMP IFRAME - Para mapas e vídeos -->
   <script async custom-element="amp-iframe" src="https://cdn.ampproject.org/v0/amp-iframe-0.1.js"></script>
+  <!-- AMP SCRIPT para galeria lightbox -->
+  <script async custom-element="amp-lightbox-gallery" src="https://cdn.ampproject.org/v0/amp-lightbox-gallery-0.1.js">
+  </script>
+  <!-- AMP SCRIPT para carrossel na galeria lightbox -->
+  <script async custom-element="amp-carousel" src="https://cdn.ampproject.org/v0/amp-carousel-0.1.js"></script>
+  <!-- AMP SCRIPT para formulários e inputs -->
+  <script async custom-element="amp-form" src="https://cdn.ampproject.org/v0/amp-form-0.1.js"></script>
   <style amp-custom>
     *,
     ::after,
@@ -21,6 +30,13 @@
     body {
       /* padding: 0 1rem; */
       max-width: 100vw;
+      font-family: 'Titillium Web', sans-serif;
+    }
+
+    a {
+      text-decoration: none;
+      background-color: transparent;
+      -webkit-text-decoration-skip: objects;
     }
 
     .container {
@@ -173,14 +189,209 @@
       color: #fff;
       text-transform: uppercase;
       font-size: 25px;
-      font-family: TitilliumWeb-Bold;
+      font-family: 'Titillium Web', sans-serif;
       margin: 0;
+    }
+
+    .infoEmpreendimento .valorEmpreendimento p {
+      color: #7b7b7b;
+      font-size: 12px;
+      margin: 0;
+      line-height: 1;
+    }
+
+    .infoEmpreendimento .valorEmpreendimento h3 {
+      color: #be2e36;
+      font-size: 30px;
+      font-family: 'Titillium Web', sans-serif;
+      margin: 0;
+      text-transform: uppercase;
+    }
+
+    .infoEmpreendimento a {
+      margin: 0 3px;
+    }
+
+    .btBox {
+      display: inline-block;
+      border: none;
+      padding: 8px 20px;
+      color: #fff;
+      background: #00c666;
+      text-transform: uppercase;
+      font-family: 'Titillium Web', sans-serif;
+      font-size: 12px;
+      border-radius: 5px;
+      -webkit-transition: all .35s;
+      transition: all .35s;
+    }
+
+    .btAro {
+      display: inline-block;
+      border: 1px solid #7b7b7b;
+      padding: 8px 20px;
+      color: #7b7b7b;
+      text-transform: uppercase;
+      font-family: 'Titillium Web', sans-serif;
+      font-size: 12px;
+      border-radius: 5px;
+    }
+
+    .conteudoEmpreentimento h3 {
+      margin: 30px 0;
+      color: #4d4d4d;
+      text-transform: uppercase;
+      font-size: 25px;
+      font-family: 'Titillium Web', sans-serif;
+      font-weight: 400;
+    }
+
+    .conteudoEmpreentimento ul {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+      flex-flow: column
+    }
+
+    .conteudoEmpreentimento ul li {
+      /* width: 33%; */
+      margin-left: -20px;
+      position: relative;
+      color: #7b7b7b;
+      margin-bottom: 20px;
+      font-size: 14px;
+      list-style: none;
+    }
+
+    .conteudoEmpreentimento ul li:before {
+      content: "\25CF;";
+      position: absolute;
+      color: #ff9e1b;
+      font-size: 6px;
+      font-style: normal;
+      font-weight: 900;
+      left: -15px;
+      top: 50%;
+      -webkit-transform: translateY(-50%);
+      transform: translateY(-50%);
+    }
+
+    .conteudoEmpreentimento amp-img {
+      margin-bottom: 30px;
+    }
+
+    .conteudo p {
+      color: #4d4d4d;
+      line-height: 20px;
+      font-size: 14px;
+      margin-bottom: 20px;
+    }
+
+    .borda {
+      margin-top: 50px;
+      padding-top: 30px;
+      border-top: 1px solid #ddd;
+    }
+
+    /* Abas para baixar plantas */
+    .tabs {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .tabs label {
+      order: 1;
+      display: block;
+      padding: 1rem 2rem;
+      margin-right: 0.2rem;
+      cursor: pointer;
+      background: #ddd;
+      font-weight: bold;
+      transition: background ease 0.2s;
+    }
+
+    .tabs .tab {
+      order: 99;
+      flex-grow: 1;
+      width: 100%;
+      display: none;
+      padding: 1rem;
+      background: #ddd;
+    }
+
+    .tabs input[type="radio"] {
+      display: none;
+    }
+
+    .tabs input[type="radio"]:checked+label {
+      background: #be2e36;
+    }
+
+    .tabs input[type="radio"]:checked+label+.tab {
+      display: block;
+    }
+
+    @media (max-width: 45em) {
+
+      .tabs .tab,
+      .tabs label {
+        order: initial;
+      }
+
+      .tabs label {
+        width: 100%;
+        margin-right: 0;
+        margin-top: 0.2rem;
+      }
     }
 
     footer {
       background: #4b4b4b;
       padding-top: 60px;
       text-align: center;
+      padding-bottom: 1rem;
+    }
+
+    footer p {
+      color: #fff;
+      font-size: 14px;
+      line-height: 25px;
+    }
+
+    footer h4 {
+      color: #fff;
+      font-size: 20px;
+      font-family: 'Titillium Web', sans-serif;
+      text-transform: uppercase;
+      margin: 0;
+      font-weight: 700;
+    }
+
+    footer h3 {
+      color: #fff;
+      font-size: 18px;
+      font-family: 'Titillium Web', sans-serif;
+      text-transform: uppercase;
+      margin: 0 0 30px 0;
+      font-weight: 700;
+    }
+
+    footer a {
+      color: #fff;
+      font-size: 13px;
+      font-family: 'Titillium Web', sans-serif;
+      text-transform: uppercase;
+      padding: 10px 0;
+      display: block;
+      font-weight: 600;
+    }
+
+    footer ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0
     }
   </style>
   <style amp-boilerplate>
@@ -253,7 +464,8 @@
   </noscript>
 
   <link rel="canonical" href=".">
-  <title>Teste AMP 1</title>
+  <link href="https://fonts.googleapis.com/css?family=Titillium+Web:400,600,700&display=swap" rel="stylesheet">
+  <title>Teste AMP</title>
 </head>
 
 <body>
@@ -276,12 +488,6 @@
   <section>
     <div class="container">
       <div class="row" id="sobre">
-        <div class="col">
-          <h3>O IMÓVEL</h3>
-          <p>Residencial Antônio Rocha, seu Apê Minha Casa Minha Vida Premium no bairro da Santa Amélia.<br>Suíte,
-            Varanda Gourmet com Churrasqueira a Gás e Elevador</p>
-          <p>&nbsp;</p>
-        </div>
         <div class="col infoEmpreendimento">
           <div class="valorEmpreendimento">
             <p>A partir de</p>
@@ -298,12 +504,20 @@
           </div>
         </div>
       </div>
+      <div class="row borda">
+        <div class="col conteudoEmpreentimento conteudo conteudoEmp">
+          <h3>O IMÓVEL</h3>
+          <p>Residencial Antônio Rocha, seu Apê Minha Casa Minha Vida Premium no bairro da Santa Amélia.<br>Suíte,
+            Varanda Gourmet com Churrasqueira a Gás e Elevador</p>
+          <p>&nbsp;</p>
+        </div>
+      </div>
     </div>
   </section>
   <section>
     <div class="container">
-      <div class="row">
-        <div class="col">
+      <div class="row borda">
+        <div class="col conteudoEmpreentimento conteudo conteudoEmp">
           <h3>OS DIFERENCIAIS</h3>
           <ul>
             <li>Área Privativa de 50,03m² | 50,49m² | 50,93m²</li>
@@ -325,53 +539,82 @@
   </section>
   <section>
     <div class="container">
-      <div class="row">
-        <div class="col">
+      <div class="row borda">
+        <div class="col conteudoEmpreentimento conteudo conteudoEmp">
           <h3>Tour Virtual</h3>
         </div>
       </div>
       <div class="row">
         <div class="col">
-          <amp-iframe src="https://www.iteleport.com.br/tour3d/rocha/fullscreen" width="200" height="100"
-            layout="responsive" allowfullscreen=""></amp-iframe>
+          <amp-iframe src="https://www.iteleport.com.br/tour3d/rocha/fullscreen" width="200" height="300"
+            layout="responsive" sandbox="allow-scripts allow-same-origin" allowfullscreen></amp-iframe>
         </div>
       </div>
     </div>
   </section>
   <section>
     <div class="container">
-      <div class="row">
-        <div class="col">
+      <div class="row borda">
+        <div class="col conteudoEmpreentimento conteudo conteudoEmp">
           <h3>Galeria do Empreendimento</h3>
         </div>
       </div>
       <div class="row">
-        <div class="col">
-          <ul>
-            <li>Imagem do Empreendimento</li>
-            <li>Imagem do Empreendimento</li>
-            <li>Imagem do Empreendimento</li>
-            <li>Imagem do Empreendimento</li>
-            <li>Imagem do Empreendimento</li>
-            <li>Imagem do Empreendimento</li>
-          </ul>
+        <div class="col conteudoEmpreentimento conteudo conteudoEmp">
+          <amp-img lightbox layout="responsive" width="300" height="200" src="img/galeria/galeria_01.jpg"
+            lightbox-thumbnail-id="thumbs-g_01"></amp-img>
+          <amp-img lightbox layout="responsive" width="300" height="200" src="img/galeria/galeria_02.jpg"
+            lightbox-thumbnail-id="thumbs-g_02"></amp-img>
+          <amp-img lightbox layout="responsive" width="300" height="200" src="img/galeria/galeria_03.jpg"
+            lightbox-thumbnail-id="thumbs-g_03"></amp-img>
+          <amp-img lightbox layout="responsive" width="300" height="200" src="img/galeria/galeria_04.jpg"
+            lightbox-thumbnail-id="thumbs-g_04"></amp-img>
+          <amp-img lightbox layout="responsive" width="300" height="200" src="img/galeria/galeria_05.jpg"
+            lightbox-thumbnail-id="thumbs-g_05"></amp-img>
+          <amp-img lightbox layout="responsive" width="300" height="200" src="img/galeria/galeria_06.jpg"
+            lightbox-thumbnail-id="thumbs-g_06"></amp-img>
+          <amp-img lightbox layout="responsive" width="300" height="200" src="img/galeria/galeria_07.jpg"
+            lightbox-thumbnail-id="thumbs-g_07"></amp-img>
+          <amp-img lightbox layout="responsive" width="300" height="200" src="img/galeria/galeria_08.jpg"
+            lightbox-thumbnail-id="thumbs-g_08"></amp-img>
+          <amp-img lightbox layout="responsive" width="300" height="200" src="img/galeria/galeria_09.jpg"
+            lightbox-thumbnail-id="thumbs-g_09"></amp-img>
+          <!-- Thumbs/Miniaturas -->
+          <amp-img id="thumbs-g_01" width="300" height="200" layout="nodisplay" src="img/galeria/g_01.jpg"></amp-img>
+          <amp-img id="thumbs-g_02" width="300" height="200" layout="nodisplay" src="img/galeria/g_02.jpg"></amp-img>
+          <amp-img id="thumbs-g_03" width="300" height="200" layout="nodisplay" src="img/galeria/g_03.jpg"></amp-img>
+          <amp-img id="thumbs-g_04" width="300" height="200" layout="nodisplay" src="img/galeria/g_04.jpg"></amp-img>
+          <amp-img id="thumbs-g_05" width="300" height="200" layout="nodisplay" src="img/galeria/g_05.jpg"></amp-img>
+          <amp-img id="thumbs-g_06" width="300" height="200" layout="nodisplay" src="img/galeria/g_06.jpg"></amp-img>
+          <amp-img id="thumbs-g_07" width="300" height="200" layout="nodisplay" src="img/galeria/g_07.jpg"></amp-img>
+          <amp-img id="thumbs-g_08" width="300" height="200" layout="nodisplay" src="img/galeria/g_08.jpg"></amp-img>
+          <amp-img id="thumbs-g_09" width="300" height="200" layout="nodisplay" src="img/galeria/g_09.jpg">
+          </amp-img>
         </div>
       </div>
     </div>
   </section>
   <section>
     <div class="container">
-      <div class="row">
-        <div class="col">
+      <div class="row borda">
+        <div class="col conteudoEmpreentimento conteudo conteudoEmp">
           <h3>Plantas do Imóvel</h3>
         </div>
       </div>
       <div class="row">
-        <div class="col">
-          <h4>Planta Baixa</h4>
-        </div>
-        <div class="col">
-          <h4>Implantação</h4>
+        <div class="col conteudoEmp">
+          <div class="tabs">
+            <input type="radio" name="tabs" id="tabone" checked="checked">
+            <label for="tabone">Planta Baixa</label>
+            <div class="tab">
+              <amp-img layout="responsive" width="300" height="200" src="img/planta_baixa.jpg"></amp-img>
+            </div>
+            <input type="radio" name="tabs" id="tabtwo">
+            <label for="tabtwo">Implantação</label>
+            <div class="tab">
+              <amp-img layout="responsive" width="300" height="200" src="img/implantacao.jpg"></amp-img>
+            </div>
+          </div>
         </div>
       </div>
       <div class="row">
@@ -386,16 +629,17 @@
   </section>
   <section>
     <div class="container">
-      <div class="row">
-        <div class="col">
+      <div class="row borda">
+        <div class="col conteudoEmpreentimento conteudo conteudoEmp">
           <h3>LOCALIZAÇÃO DO IMÓVEL</h3>
           <p>Rua da Floresta - Santa Amélia Maceió - AL 57020-200</p>
         </div>
       </div>
       <div class="row">
-        <div class="col">
-          <amp-iframe width="200" height="100" sandbox="allow-scripts allow-same-origin" layout="responsive"
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1966.9869741582909!2d-35.768029042084116!3d-9.597511453613095!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x70148ebcf2947f3%3A0x30a69beaf502128b!2sUnnamed+Road+-+Tabuleiro+do+Martins%2C+Macei%C3%B3+-+AL%2C+57060-050!5e0!3m2!1spt-BR!2sbr!4v1563738295689!5m2!1spt-BR!2sbr">
+        <div class="col conteudoEmpreentimento conteudo conteudoEmp">
+          <amp-iframe width="200" height="200"
+            sandbox="allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox" layout="responsive"
+            src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBVpAhGnlJ3yWPHs3CZBLCD1omzaRp859A&q=-9.597635,-35.767184">
           </amp-iframe>
         </div>
       </div>
@@ -417,15 +661,14 @@
           <div class="row">
             <div class="col">
               <ul>
-
+                <li><a href="/home" title="Home">Home</a></li>
+                <li><a href="/rocha" title="A ROCHA">A ROCHA</a></li>
+                <li><a href="/imoveis" title="EMPREENDIMENTOS">EMPREENDIMENTOS</a></li>
+                <li><a href="/blog" title="NOSSO BLOG">NOSSO BLOG</a></li>
+                <li><a href="https://www.youtube.com/channel/UCsC_fA5tYqwZseEspc0C_qg" target="_blank"
+                    title="VÍDEOS">VÍDEOS</a></li>
+                <li><a href="/contato" title="CONTATO">CONTATO</a></li>
               </ul>
-              <li><a href="/home" title="Home">Home</a></li>
-              <li><a href="/rocha" title="A ROCHA">A ROCHA</a></li>
-              <li><a href="/imoveis" title="EMPREENDIMENTOS">EMPREENDIMENTOS</a></li>
-              <li><a href="/blog" title="NOSSO BLOG">NOSSO BLOG</a></li>
-              <li><a href="https://www.youtube.com/channel/UCsC_fA5tYqwZseEspc0C_qg" target="_blank"
-                title="VÍDEOS">VÍDEOS</a></li>
-              <li><a href="/contato" title="CONTATO">CONTATO</a></li>
             </div>
           </div>
         </div>
