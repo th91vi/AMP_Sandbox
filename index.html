@@ -20,6 +20,75 @@
   <script async custom-element="amp-carousel" src="https://cdn.ampproject.org/v0/amp-carousel-0.1.js"></script>
   <!-- AMP SCRIPT para formulários e inputs -->
   <script async custom-element="amp-form" src="https://cdn.ampproject.org/v0/amp-form-0.1.js"></script>
+  <!-- AMP Boilerplate CSS -->
+  <style amp-boilerplate>
+    body {
+      -webkit-animation: -amp-start 8s steps(1, end) 0s 1 normal both;
+      -moz-animation: -amp-start 8s steps(1, end) 0s 1 normal both;
+      -ms-animation: -amp-start 8s steps(1, end) 0s 1 normal both;
+      animation: -amp-start 8s steps(1, end) 0s 1 normal both
+    }
+
+    @-webkit-keyframes -amp-start {
+      from {
+        visibility: hidden
+      }
+
+      to {
+        visibility: visible
+      }
+    }
+
+    @-moz-keyframes -amp-start {
+      from {
+        visibility: hidden
+      }
+
+      to {
+        visibility: visible
+      }
+    }
+
+    @-ms-keyframes -amp-start {
+      from {
+        visibility: hidden
+      }
+
+      to {
+        visibility: visible
+      }
+    }
+
+    @-o-keyframes -amp-start {
+      from {
+        visibility: hidden
+      }
+
+      to {
+        visibility: visible
+      }
+    }
+
+    @keyframes -amp-start {
+      from {
+        visibility: hidden
+      }
+
+      to {
+        visibility: visible
+      }
+    }
+  </style><noscript>
+    <style amp-boilerplate>
+      body {
+        -webkit-animation: none;
+        -moz-animation: none;
+        -ms-animation: none;
+        animation: none
+      }
+    </style>
+  </noscript>
+  <!-- AMP Custom CSS -->
   <style amp-custom>
     *,
     ::after,
@@ -48,9 +117,17 @@
       margin-top: 1.5rem;
     }
 
+    section {
+      margin: 0.75rem 0;
+    }
+
+    /* .container:first-of-type {
+      margin-top: 0;
+    }
+
     .container:last-of-type {
       margin-bottom: 1.5rem;
-    }
+    } */
 
     @media (min-width: 576px) {
       .container {
@@ -147,6 +224,11 @@
       opacity: 0.65;
     }
 
+    amp-img {
+      vertical-align: middle;
+      border-style: none;
+    }
+
     a.btn.disabled,
     fieldset:disabled a.btn {
       pointer-events: none;
@@ -158,6 +240,7 @@
       background: url(https://sgw.meurocha.com.br/storage/inc_thumb3.php?&arquivo=empreendimento/1/20190422084254_5cbda8be8b1a7.jpg);
       background-position: center center;
       background-repeat: no-repeat;
+      position: relative;
     }
 
     header.empreendimento .info {
@@ -166,11 +249,42 @@
       background: rgba(0, 0, 0, .7);
       left: 0;
       bottom: 0;
-      padding: 20px 0;
+      padding-bottom: 1rem
+    }
+
+    header.empreendimento .info .selo {
+      position: absolute;
+      background: #F36A5D;
+      padding: 3px 15px;
+      border-radius: 15px;
+      top: -10vh;
+      transition: all .35s;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1)
+    }
+
+    header.empreendimento .info .selo svg {
+      height: 18px;
+      width: 23px
+    }
+
+    header.empreendimento .info .selo span {
+      color: white;
+      text-transform: uppercase;
+      font-size: 12px;
+      line-height: 1;
+      padding-left: 8px
     }
 
     header.empreendimento .info .selo.lancamento {
-      background: #f36a5d;
+      background: #F36A5D
+    }
+
+    header.empreendimento .info .selo.entrega {
+      background: #13C68E
+    }
+
+    header.empreendimento .info .selo.construcao {
+      background: #FF953A
     }
 
     .infoEmpreendimento {
@@ -191,6 +305,28 @@
       font-size: 25px;
       font-family: 'Titillium Web', sans-serif;
       margin: 0;
+    }
+
+    ul li {
+      list-style: none;
+    }
+
+    header.empreendimento .info ul {
+      margin: 0;
+      padding: 0;
+    }
+
+    header.empreendimento .info ul li {
+      margin-bottom: 10px;
+      color: #fff;
+    }
+
+    header.empreendimento .info ul li span {
+      color: #fff;
+      font-size: 14px;
+      padding-left: 10px;
+      margin-left: 10px;
+      border-left: 1px solid #fff;
     }
 
     .infoEmpreendimento .valorEmpreendimento p {
@@ -394,96 +530,43 @@
       padding: 0
     }
   </style>
-  <style amp-boilerplate>
-    body {
-      -webkit-animation: -amp-start 8s steps(1, end) 0s 1 normal both;
-      -moz-animation: -amp-start 8s steps(1, end) 0s 1 normal both;
-      -ms-animation: -amp-start 8s steps(1, end) 0s 1 normal both;
-      animation: -amp-start 8s steps(1, end) 0s 1 normal both
-    }
 
-    @-webkit-keyframes -amp-start {
-      from {
-        visibility: hidden
-      }
-
-      to {
-        visibility: visible
-      }
-    }
-
-    @-moz-keyframes -amp-start {
-      from {
-        visibility: hidden
-      }
-
-      to {
-        visibility: visible
-      }
-    }
-
-    @-ms-keyframes -amp-start {
-      from {
-        visibility: hidden
-      }
-
-      to {
-        visibility: visible
-      }
-    }
-
-    @-o-keyframes -amp-start {
-      from {
-        visibility: hidden
-      }
-
-      to {
-        visibility: visible
-      }
-    }
-
-    @keyframes -amp-start {
-      from {
-        visibility: hidden
-      }
-
-      to {
-        visibility: visible
-      }
-    }
-  </style>
-  <noscript>
-    <style amp-boilerplate>
-      body {
-        -webkit-animation: none;
-        -moz-animation: none;
-        -ms-animation: none;
-        animation: none
-      }
-    </style>
-  </noscript>
-
-  <link rel="canonical" href=".">
+  <link rel="canonical" href="https://meurocha.com.br/imoveis/residencial-antonio-rocha">
   <link href="https://fonts.googleapis.com/css?family=Titillium+Web:400,600,700&display=swap" rel="stylesheet">
   <title>Teste AMP</title>
 </head>
 
 <body>
   <header class="empreendimento">
-    <!-- <div class="info">
+    <div class="info">
       <div class="container">
         <div class="row">
           <div class="col">
             <div class="selo lancamento">
-              <amp-img src="img/icone-foguete.svg" alt="Ícone de andamento da obra de RESIDENCIAL ANTÔNIO ROCHA"
-                width="18px" height="18px">
+              <amp-img src="img/startup.svg" alt="Ícone de andamento da obra de RESIDENCIAL ANTÔNIO ROCHA" width="18px"
+                height="18px"></amp-img>
                 <span>Lançamento</span>
             </div>
             <span class="bairro">Santa Amélia - Maceió</span>
+            <h1>residencial antônio rocha</h1>
+          </div>
+          <div class="col">
+            <ul>
+              <li>
+                <amp-img src="img/startup.svg" alt="Ícone de andamento da obra de RESIDENCIAL ANTÔNIO ROCHA"
+                  width="18px" height="18px"></amp-img>
+                  <span>2 quartos</span>
+              </li>
+              <li>
+                <amp-img src="img/startup.svg" alt="Ícone de andamento da obra de RESIDENCIAL ANTÔNIO ROCHA"
+                  width="18px" height="18px"></amp-img>
+                  <span>50,03m², 50,49m², 50,93m²</span>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
-    </div> -->
+    </div>
   </header>
   <section>
     <div class="container">
