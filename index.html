@@ -431,6 +431,232 @@
       border-top: 1px solid #ddd;
     }
 
+    /* Modal contendo formulário */
+/* Container */
+.modal {
+
+    /* Overlay page content */
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 10000;
+
+    /* Transition opacity on open */
+    -webkit-transition: opacity 150ms ease-in;
+    -moz-transition: opacity 150ms ease-in;
+    transition: opacity 150ms ease-in;
+
+    /* Hide for now */
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Show modal */
+.modal:target {
+    opacity: 1;
+    pointer-events: auto;
+    /* at time of writing (Feb 2012), pointer-events not supported by Opera or IE */
+}
+
+/* Content */
+.modal > div {
+    width: 90%;
+    background: #fff;
+    position: relative;
+    margin: 10% auto;
+
+    /* Default minimise animation */
+    -webkit-animation: minimise 150ms linear;
+    -moz-animation: minimise 150ms linear;
+    animation: minimise 150ms linear;
+
+    /* Prettify */
+    padding: 30px;
+    border-radius: 7px;
+    box-shadow: 0 3px 20px rgba(0,0,0,0.9);
+    background: #fff;
+    /* background: -moz-linear-gradient(#fff, #ccc);
+    background: -webkit-linear-gradient(#fff, #ccc);
+    background: -o-linear-gradient(#fff, #ccc);
+    background: linear-gradient(#fff, #ccc); */
+    text-shadow: 0 1px 0 #fff;
+}
+
+/* Override animation on modal open */
+.modal:target > div {
+    -webkit-animation-name: bounce;
+    -moz-animation-name: bounce;
+    animation-name: bounce;
+}
+
+.modal h2 {
+    font-size: 36px;
+    padding: 0 0 20px;
+}
+
+@-webkit-keyframes bounce {
+  0% {
+    -webkit-transform: scale3d(0.1,0.1,1);
+    box-shadow: 0 3px 20px rgba(0,0,0,0.9);
+  }
+  55% {
+    -webkit-transform: scale3d(1.08,1.08,1);
+    box-shadow: 0 10px 20px rgba(0,0,0,0);
+  }
+  75% {
+    -webkit-transform: scale3d(0.95,0.95,1);
+    box-shadow: 0 0 20px rgba(0,0,0,0.9);
+  }
+  100% {
+    -webkit-transform: scale3d(1,1,1);
+    box-shadow: 0 3px 20px rgba(0,0,0,0.9);
+  }
+}
+
+@-webkit-keyframes minimise {
+  0% {
+    -webkit-transform: scale3d(1,1,1);
+  }
+  100% {
+    -webkit-transform: scale3d(0.1,0.1,1);
+  }
+}
+
+@-moz-keyframes bounce {
+  0% {
+    -moz-transform: scale3d(0.1,0.1,1);
+    box-shadow: 0 3px 20px rgba(0,0,0,0.9);
+  }
+  55% {
+    -moz-transform: scale3d(1.08,1.08,1);
+    box-shadow: 0 10px 20px rgba(0,0,0,0);
+  }
+  75% {
+    -moz-transform: scale3d(0.95,0.95,1);
+    box-shadow: 0 0 20px rgba(0,0,0,0.9);
+  }
+  100% {
+    -moz-transform: scale3d(1,1,1);
+    box-shadow: 0 3px 20px rgba(0,0,0,0.9);
+  }
+}
+
+@-moz-keyframes minimise {
+  0% {
+    -moz-transform: scale3d(1,1,1);
+  }
+  100% {
+    -moz-transform: scale3d(0.1,0.1,1);
+  }
+}
+
+@keyframes bounce {
+  0% {
+    transform: scale3d(0.1,0.1,1);
+    box-shadow: 0 3px 20px rgba(0,0,0,0.9);
+  }
+  55% {
+    transform: scale3d(1.08,1.08,1);
+    box-shadow: 0 10px 20px rgba(0,0,0,0);
+  }
+  75% {
+    transform: scale3d(0.95,0.95,1);
+    box-shadow: 0 0 20px rgba(0,0,0,0.9);
+  }
+  100% {
+    transform: scale3d(1,1,1);
+    box-shadow: 0 3px 20px rgba(0,0,0,0.9);
+  }
+}
+
+@keyframes minimise {
+  0% {
+    transform: scale3d(1,1,1);
+  }
+  100% {
+    transform: scale3d(0.1,0.1,1);
+  }
+}
+
+/* Modal close link */
+.modal a[href="#close"] {
+    position: absolute;
+    right: 0;
+    top: 0;
+    color: transparent;
+}
+
+/* Reset native styles */
+.modal a[href="#close"]:focus {
+    outline: none;
+}
+
+/* Create close button */
+.modal a[href="#close"]:after {
+    content: 'X';
+    display: block;
+
+    /* Position */
+    position: absolute;
+    right: -10px;
+    top: -10px;
+    width: 30px;
+    padding: 1px 1px 1px 2px;
+
+    /* Style */
+    text-decoration: none;
+    text-shadow: none;
+    text-align: center;
+    font-weight: bold;
+    background: #000;
+    color: #fff;
+    border: 3px solid #fff;
+    border-radius: 20px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+    }
+
+    .modal a[href="#close"]:focus:after,
+    .modal a[href="#close"]:hover:after {
+    -webkit-transform: scale(1.1,1.1);
+    -moz-transform: scale(1.1,1.1);
+    transform: scale(1.1,1.1);
+}
+
+.modal a[href="#close"]:focus:after {
+    outline: 1px solid #000;
+}
+
+/* Open modal */
+a.openModal {
+    margin: 1em auto;
+    display: block;
+    width: 200px;
+    background: #ccc;
+    text-align: center;
+    padding: 10px;
+    border-radius: 7px;
+    background: #fff;
+    /* background: -moz-linear-gradient(#fff, #ddd);
+    background: -webkit-linear-gradient(#fff, #ddd);
+    background: -o-linear-gradient(#fff, #ddd);
+    background: linear-gradient(#fff, #ddd); */
+    text-shadow: 0 1px 0 #fff;
+    border: 1px solid rgba(0,0,0,0.1);
+    /* box-shadow: 0 1px 1px rgba(0,0,0,0.3); */
+}
+
+a.openModal:hover,
+a.openModal:focus {
+    /* background: -moz-linear-gradient(#fff, #ccc);
+    background: -webkit-linear-gradient(#fff, #ccc);
+    background: -o-linear-gradient(#fff, #ccc);
+    background: linear-gradient(#fff, #ccc); */
+}
+
+    
     /* Abas para baixar plantas */
     .tabs {
       display: flex;
@@ -533,7 +759,29 @@
 
   <link rel="canonical" href="https://meurocha.com.br/imoveis/residencial-antonio-rocha">
   <link href="https://fonts.googleapis.com/css?family=Titillium+Web:400,600,700&display=swap" rel="stylesheet">
-  <title>Teste AMP</title>
+  <title>Residencial Antônio Rocha</title>
+  <meta name="description"
+    content="Residencial Antônio Rocha, seu Apê Minha Casa Minha Vida Premium no bairro da Santa Amélia.Suíte, Varanda Gourmet com Churrasqueira a Gás e Elevador ">
+  <meta name="author" content="Alfama Web">
+
+  <meta name="theme-color" content="#BE2E36">
+
+  <!-- Social: Twitter -->
+  <meta name='twitter:card' content='summary_large_image'>
+  <meta name='twitter:title' content='Rocha Empreendimentos - RESIDENCIAL ANTÔNIO ROCHA'>
+  <meta name='twitter:description'
+    content='Residencial Antônio Rocha, seu Apê Minha Casa Minha Vida Premium no bairro da Santa Amélia.Suíte, Varanda Gourmet com Churrasqueira a Gás e Elevador '>
+  <meta name='twitter:image:src' content='http://meurocha.com.br/assets/img/social.jpg'>
+
+  <!-- Social: Facebook / Open Graph -->
+  <meta property='og:url' content='https://meurocha.com.br/imoveis/residencial-antonio-rocha'>
+  <meta property='og:type' content='website'>
+  <meta property='og:title' content='RESIDENCIAL ANTÔNIO ROCHA - Rocha Empreendimentos'>
+  <meta property='og:image' content='http://meurocha.com.br/assets/img/social.jpg' />
+  <meta property='og:description'
+    content='Residencial Antônio Rocha, seu Apê Minha Casa Minha Vida Premium no bairro da Santa Amélia.Suíte, Varanda Gourmet com Churrasqueira a Gás e Elevador '>
+  <meta property='og:site_name' content='Rocha Empreendimentos'>
+
 </head>
 
 <body>
@@ -545,7 +793,7 @@
             <div class="selo lancamento">
               <amp-img src="img/startup.svg" alt="Ícone de andamento da obra de RESIDENCIAL ANTÔNIO ROCHA" width="18px"
                 height="18px"></amp-img>
-                <span>Lançamento</span>
+              <span>Lançamento</span>
             </div>
             <span class="bairro">Santa Amélia - Maceió</span>
             <h1>residencial antônio rocha</h1>
@@ -553,14 +801,14 @@
           <div class="col">
             <ul>
               <li>
-                <amp-img src="img/startup.svg" alt="Ícone de andamento da obra de RESIDENCIAL ANTÔNIO ROCHA"
+                <amp-img src="img/icone-planta.svg" alt="Ícone de planta de RESIDENCIAL ANTÔNIO ROCHA"
                   width="18px" height="18px"></amp-img>
-                  <span>2 quartos</span>
+                <span>2 quartos</span>
               </li>
               <li>
-                <amp-img src="img/startup.svg" alt="Ícone de andamento da obra de RESIDENCIAL ANTÔNIO ROCHA"
+                <amp-img src="img/icone-cama.svg" alt="Ícone do número de quartos de RESIDENCIAL ANTÔNIO ROCHA"
                   width="18px" height="18px"></amp-img>
-                  <span>50,03m², 50,49m², 50,93m²</span>
+                <span>50,03m², 50,49m², 50,93m²</span>
               </li>
             </ul>
           </div>
@@ -580,10 +828,120 @@
             <p>Previsão de Entrega: Dezembro de 2020</p>
           </div>
           <div class="bts">
-            <a href="#" data-toggle="modal" data-target="#tenhointeresse" title="Tenho Interesse"
-              class="btBox laranja">Tenho Interesse</a>
-            <a href="#" data-toggle="modal" data-target="#simulacao" title="Simule a Compra" class="btAro">Simule a
-              Compra</a>
+            <!-- Modais -->
+            <!-- Modal 1 -->
+            <aside id="modal-interesse" class="modal">
+                <div>
+                    <form id="form_interesse" name="Tenho Interesse" data-submit="false" method="post" 
+                    enctype='multipart/form-data' data-sucess='Mensagem enviada com sucesso' 
+                    data-error='Problemas ao enviar a mensagem'
+                    action="https://rocha.construtordevendas.com.br/api/set/interesses/novointeresse">
+        
+                    <input type="hidden" name="assunto" value="Rocha - Interesse em: Residencial Antônio Rocha">
+                    <input type='hidden' name='subject' value='Rocha - Interesse em: Residencial Antônio Rocha'>
+                    <input type="hidden" name="idempreendimento" id="idempreendimento" value="2" />
+                    <input type="hidden" name="idemp" id="idemp" value="2" />
+                    <input type="hidden" name="acao" id="acao" value="interesse" />
+                    <input type='hidden' name='site' value='URL DA AMP'>
+                    <input type='hidden' name='url_obrigado' value='imovel'>
+                    <div class="row">
+                      <div class="col">
+                        <div class='lince-input'>
+                            <label for='input-nome'></label>
+                            <input type='text' name='nome' placeholder='Nome' id='input-nome' maxlength='100' class='input-alpha' required>
+                        </div>
+                      </div>
+                      <div class="col">
+                        <div class='lince-input'>
+                            <label for='input-email'></label>
+                            <input type='email' name='email' placeholder='E-mail' id='input-email' maxlength='50' class='input-email' required>
+                        </div>
+                      </div>
+                      <div class="col">
+                        <div class='lince-input'>
+                            <label for='input-telefone'></label>
+                            <input type='tel' name='telefone' placeholder='Telefone' id='input-telefone' maxlength='50' class='input-tel' required>
+                        </div>
+                      </div>
+                    <div class="col">
+                      <input type='submit' value='Tenho Interesse' class="btBox vermelho full">
+                    </div>
+        
+                </div>
+        
+                  <input type='text' name='url-form' class='url-form' value=' ' />
+              </form>
+                    <a href="#close" title="Fechar">Fechar</a>
+                </div>
+            </aside>
+            
+            <a href="#modal-interesse" class="btBox">tenho interesse</a>
+            
+            <!-- Modal 2 -->
+            <aside id="modal-simulacao" class="modal">
+                <div>
+                    <form id="form_simule" name="Simulação" data-submit="false" method="post" 
+                    enctype='multipart/form-data' data-sucess='Mensagem enviada com sucesso' 
+                    data-error='Problemas ao enviar a mensagem'
+                    action="">
+        
+                    <input type="hidden" name="assunto" value="Rocha - Interesse em: Residencial Antônio Rocha">
+                    <input type='hidden' name='subject' value='Rocha - Interesse em: Residencial Antônio Rocha'>
+                    <input type="hidden" name="idempreendimento" id="idempreendimento" value="<2" />
+                    <input type="hidden" name="acao" id="acao" value="simulacao" />
+                    <input type='hidden' name='site' value='URL AMP'>
+                    <input type='hidden' name='url_obrigado' value='imovel'>
+                    <div class="row">
+                      <div class="col">
+                        <div class='lince-input'>
+                            <label for='input-nome'></label>
+                            <input type='text' name='nome' placeholder='Nome' id='input-nome' maxlength='100' class='input-alpha' required>
+                        </div>
+                      </div>
+                      <div class="col">
+                        <div class='lince-input'>
+                            <label for='input-email'></label>
+                            <input type='email' name='email' placeholder='E-mail' id='input-email' maxlength='50' class='input-email' required>
+                        </div>
+                      </div>
+                      <div class="col">
+                        <div class='lince-input'>
+                            <label for='input-telefone'></label>
+                            <input type='tel' name='telefone' placeholder='Telefone' id='input-telefone' maxlength='50' class='input-tel' required>
+                        </div>
+                      </div>
+                      <div class="col">
+                        <div class='lince-input'>
+                            <label for='input-renda'></label>
+                            <input type='text' name='renda' placeholder='Renda Familiar Bruta' id='input-renda' maxlength='100' class='input-real' required>
+                        </div>
+                      </div>
+                      <div class="col">
+                        <div class='lince-input'>
+                            <label for='input-estado-civil'></label>
+                            <select name='estado-civil' placeholder='Estado Civil' id='input-estado-civil' class='input-alpha' required>
+                              <option value="" disabled selected>Estado Civil</option>
+                              <option value="solteiro">Solteiro</option>
+                              <option value="casado">Casado</option>
+                              <option value="uniao-estavel">União Estável</option>
+                              <option value="divorciado">Divorciado</option>
+                              <option value="viuvo">Viúvo</option>
+                            </select>
+                        </div>
+                      </div>
+                    <div class="col">
+                      <input type='submit' value='Simular' class="btBox vermelho full">
+                    </div>
+        
+                </div>
+        
+                  <input type='text' name='url-form' class='url-form' value=' ' />
+              </form>
+                    <a href="#close" title="Fechar">Fechar</a>
+                </div>
+            </aside>
+            
+            <a href="#modal-simulacao" class="btAro">simule a compra</a>
           </div>
         </div>
       </div>
